@@ -11,7 +11,7 @@
             md="4"
             lg="3"
           >
-            <v-card root>
+            <v-card>
               <v-card-title class="subheading font-weight-bold">
                 {{ 'Case: x=' + item.name }}
               </v-card-title>
