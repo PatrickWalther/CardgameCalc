@@ -11,7 +11,7 @@
             md="4"
             lg="3"
           >
-            <v-card primary>
+            <v-card root>
               <v-card-title class="subheading font-weight-bold">
                 {{ 'Case: x=' + item.name }}
               </v-card-title>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+
 import vuetify from "@/plugins/vuetify";
 
 export default {
