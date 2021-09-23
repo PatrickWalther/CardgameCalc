@@ -44,26 +44,29 @@
         <v-btn color="primary" text @click="calculate"> Calculate </v-btn>
       </v-card-actions>
     </v-card>
-    <div id="results"></div>
+    <HypergeometricDistributionResult v-if="results.items" v-bind:items="results.items"/>
   </v-container>
 </template>
 
 <script>
-import Vue from "vue";
+// import Vue from "vue";
 import HypergeometricDistributionResult from "./HypergeometricDistributionResult";
 
 var Hypergeometric = require("@stdlib/stats/base/dists/hypergeometric/ctor");
-const HyperGeoDisResultCtor = Vue.extend(HypergeometricDistributionResult);
+// const HyperGeoDisResultCtor = Vue.extend(HypergeometricDistributionResult);
 
 export default {
   name: "Calculator",
-  data: function () {
+  components: {
+    HypergeometricDistributionResult
+  },
+  data: () => {
     return {
       cardsInDeck: null,
       cardsWanted: null,
       cardsToDraw: null,
       formHasErrors: false,
-      results: null,
+      results: {items: null},
     };
   },
   methods: {
@@ -97,15 +100,8 @@ export default {
 
       console.log(items);
 
-      if (this.results == null) {
-        this.results = new HyperGeoDisResultCtor({
-          propsData: {
-            items: items,
-          },
-        }).$mount("#results");
-      } else {
         this.results.items = items;
-      }
+
     },
   },
 };
